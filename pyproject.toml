@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "nomia"
+version = "0.1.0"
+description = ""
+authors = ["Dmitry Potapov <potapov627@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.1"
+psycopg2-binary = "*"
+
+[tool.poetry.group.dev.dependencies]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
