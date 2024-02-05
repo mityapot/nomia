@@ -13,13 +13,14 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:13.0-alpine
+    image: postgres:latest
+    restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - pgdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=test_django
       - POSTGRES_PASSWORD=test_django
       - POSTGRES_DB=nomia_db
 
 volumes:
-  postgres_data:
+  pgdata:
