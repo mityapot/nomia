@@ -5,29 +5,31 @@
     {% block toppanel %}
         {% include "top_panel.html" %}
     {% endblock toppanel %}
-    <div class="d-flex flex-column justify-content-center">
+    <div class="d-flex flex-row justify-content-center">
         <h4>{{ poll_name }}</h4>
+    </div>
+    <div class="d-flex flex-row justify-content-center">
         <div class="accordion" id="accordionResults">
-            {% for answer in answers %}
+            {% for question, answers in questions.items %}
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingQuestion_{{ answer.choice.question.id }}">
+                    <h2 class="accordion-header" id="headingQuestion_{{ question.id }}">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseQuestion_{{ answer.choice.question.id }}" aria-expanded="true"
-                                aria-controls="collapseQuestion_{{ answer.choice.question.id }}">
-                            {{ answer.choice.question.text }}
+                                data-bs-target="#collapseQuestion_{{ question.id }}" aria-expanded="true"
+                                aria-controls="collapseQuestion_{{ question.id }}">
+                            {{ question.text }}
                         </button>
                     </h2>
-                    <div id="collapseQuestion_{{ answer.choice.question.id }}" class="accordion-collapse collapse"
-                         aria-labelledby="headingQuestion_{{ answer.choice.question.id }}"
+                    <div id="collapseQuestion_{{ question.id }}" class="accordion-collapse collapse"
+                         aria-labelledby="headingQuestion_{{ question.id }}"
                          data-bs-parent="#accordionResults">
                         <div class="accordion-body">
-                            {% for choice in answer.choice.question.choice_set.all %}
+                            {% for choice in question.choice_set.all %}
                                 <div class="form-check">
-                                    <input class="form-check-input" {% if answer.choice.question.choice_type == 0 %}
-                                           type="radio" name="radio" {% elif answer.choice.question.choice_type == 1 %}
+                                    <input class="form-check-input" {% if question.choice_type == 0 %}
+                                           type="radio" name="radio" {% elif question.choice_type == 1 %}
                                            type="checkbox" {% endif %} value=""
                                            id="Disabled_{{ choice.id }}"
-                                            {% if  answer.choice == choice %} checked {% endif %} disabled>
+                                            {% if choice.id in answers %} checked {% endif %} disabled>
                                     <label class="form-check-label" for="Disabled_{{ choice.id }}">
                                         {{ choice.text }}
                                     </label>
