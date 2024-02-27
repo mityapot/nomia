@@ -1,0 +1,47 @@
+{% extends "base_site.html" %}
+{% load static %}
+{% block title %} Result {% endblock title %}
+{% block content %}
+    {% block toppanel %}
+        {% include "top_panel.html" %}
+    {% endblock toppanel %}
+    <div class="d-flex flex-column justify-content-center">
+        <h4>{{ poll_name }}</h4>
+        <div class="accordion" id="accordionResults">
+            {% for answer in answers %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingQuestion_{{ answer.choice.question.id }}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseQuestion_{{ answer.choice.question.id }}" aria-expanded="true"
+                                aria-controls="collapseQuestion_{{ answer.choice.question.id }}">
+                            {{ answer.choice.question.text }}
+                        </button>
+                    </h2>
+                    <div id="collapseQuestion_{{ answer.choice.question.id }}" class="accordion-collapse collapse"
+                         aria-labelledby="headingQuestion_{{ answer.choice.question.id }}"
+                         data-bs-parent="#accordionResults">
+                        <div class="accordion-body">
+                            {% for choice in answer.choice.question.choice_set.all %}
+                                <div class="form-check">
+                                    <input class="form-check-input" {% if answer.choice.question.choice_type == 0 %}
+                                           type="radio" name="radio" {% elif answer.choice.question.choice_type == 1 %}
+                                           type="checkbox" {% endif %} value=""
+                                           id="Disabled_{{ choice.id }}"
+                                            {% if  answer.choice == choice %} checked {% endif %} disabled>
+                                    <label class="form-check-label" for="Disabled_{{ choice.id }}">
+                                        {{ choice.text }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <script type="text/javascript"> set_active("results") </script>
+{% endblock javascripts %}

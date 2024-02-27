@@ -1,0 +1,31 @@
+{% extends "base_site.html" %}
+{% load static %}
+{% block title %} List {% endblock title %}
+{% block content %}
+    {% block toppanel %}
+        {% include "top_panel.html" %}
+    {% endblock toppanel %}
+    <div class="d-flex flex-column justify-content-center">
+    <form class="form" role="form" autocomplete="off" action="{% url 'polls:vote' question.poll.id %}" method="POST">
+        {% csrf_token %}
+        <legend>{{ question.text }}</legend>
+        {% for choice in question.choice_set.all %}
+            <div class="form-check">
+                <input class="form-check-input" {% if question.choice_type == 0 %} type="radio"
+                       name="radio" {% elif  question.choice_type == 1 %} type="checkbox"
+                       name="checkbox_{{ choice.id }}" {% endif %} id="{{ choice.id }}" value="{{ choice.id }}">
+                <label class="form-check-label" for="{{ choice.id }}">
+                    {{ choice.text }}
+                </label>
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <input type="hidden" id="questionID" name="question" value="{{ question.id }}">
+    </form>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <script type="text/javascript"> set_active("vote") </script>
+{% endblock javascripts %}
