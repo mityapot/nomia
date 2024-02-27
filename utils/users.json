@@ -1,0 +1,75 @@
+{
+  "dscr": "User data",
+  "data": [
+    {
+      "username": "polmarina",
+      "password": "v0X4imrH",
+      "first_name": "Марина",
+      "last_name": "Полтанова",
+      "email": "marina4350@outlook.com"
+    },
+    {
+      "username": "emashukov",
+      "password": "1e77MhBA",
+      "first_name": "Егор",
+      "last_name": "Машуков",
+      "email": "egor.mashukov@gmail.com"
+    },
+    {
+      "username": "horoshart",
+      "password": "pgnKT7Mh",
+      "first_name": "Артем",
+      "last_name": "Хорошилов",
+      "email": "artem1967@rambler.ru"
+    },
+    {
+      "username": "pugachivan",
+      "password": "AKQReP7p",
+      "first_name": "Иван",
+      "last_name": "Пугачев",
+      "email": "ivan.pugachev@rambler.ru"
+    },
+    {
+      "username": "saitovptr",
+      "password": "wNEEa95Z",
+      "first_name": "Петр",
+      "last_name": "Саитов",
+      "email": "petr1968@gmail.com"
+    },
+    {
+      "username": "kusmarina",
+      "password": "sr7zMXw2",
+      "first_name": "Афанасия",
+      "last_name": "Кузанова",
+      "email": "afanasiya25011960@yandex.ru"
+    },
+    {
+      "username": "smetnadya",
+      "password": "Z7sGtxU1",
+      "first_name": "Надежда",
+      "last_name": "Сметанина",
+      "email": "nadejda9060@ya.ru"
+    },
+    {
+      "username": "ivldariya",
+      "password": "DC9wVmVd",
+      "first_name": "Дарья",
+      "last_name": "Ивлева",
+      "email": "darya12091970@yandex.ru"
+    },
+    {
+      "username": "strelnikovam",
+      "password": "nWLMr5LK",
+      "first_name": "Марьяна",
+      "last_name": "Стрельникова",
+      "email": "maryana1981@rambler.ru"
+    },
+    {
+      "username": "zharovdnl",
+      "password": "zoFmH4jv",
+      "first_name": "Данила",
+      "last_name": "Жаров",
+      "email": "danila16@yandex.ru"
+    }
+  ]
+}
